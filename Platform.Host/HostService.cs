@@ -1,32 +1,39 @@
-﻿using System;
-using System.ServiceProcess;
-using Platform.Service;
+﻿using Platform.Service;
+using System;
 using System.ServiceModel;
+
 namespace Platform.Host
 {
-    public partial class HostService : ServiceBase
+    public class HostService
     {
-        public HostService()
-        {
-            InitializeComponent();
-        }
+        private ServiceHost _serviceHost = null;
 
-        ServiceHost host = null;
-
-        protected override void OnStart(string[] args)
+        public void Start()
         {
-            host = new ServiceHost(typeof(TopicService), new Uri("net.tcp://localhost:7001/service"));
-            host.Open();
-        }
-
-        protected override void OnStop()
-        {
-            if(host != null)
+            if (_serviceHost != null)
             {
-                host.Close();
+                _serviceHost.Close();
             }
 
-            host = null;
+            _serviceHost = new ServiceHost(typeof(TopicService));
+
+            _serviceHost.Open();
+            Console.WriteLine("WCF Service started.");
+
+            _serviceHost.Faulted += (sender, args) =>
+            {
+                // fault handling
+            };
+        }
+
+        public void Stop()
+        {
+            if (_serviceHost != null)
+            {
+                _serviceHost.Close();
+                _serviceHost = null;
+                Console.WriteLine("WCF Service stopped.");
+            }
         }
     }
 }

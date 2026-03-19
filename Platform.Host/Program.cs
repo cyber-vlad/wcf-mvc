@@ -1,17 +1,26 @@
-﻿using System.ServiceProcess;
+﻿using Topshelf;
 
 namespace Platform.Host
 {
-    internal static class Program
+    internal class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[]
+            HostFactory.Run(hostConfig =>
             {
-                new HostService()
-            };
-            ServiceBase.Run(ServicesToRun);
+                hostConfig.Service<HostService>(serviceConfig =>
+                {
+                    serviceConfig.ConstructUsing(name => new HostService());
+                    serviceConfig.WhenStarted(s => s.Start());
+                    serviceConfig.WhenStopped(s => s.Stop());
+                });
+
+                hostConfig.RunAsLocalSystem();
+                hostConfig.SetServiceName("Host Platform Service");
+                //hostConfig.SetDisplayName("My WCF Service Hosted by Topshelf");
+                //hostConfig.SetDescription("A WCF service hosted within a Windows Service using Topshelf.");
+                hostConfig.StartAutomatically();
+            });
         }
     }
 }
