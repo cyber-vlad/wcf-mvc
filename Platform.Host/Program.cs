@@ -16,7 +16,7 @@ namespace Platform.Host
                 });
 
                 hostConfig.RunAsLocalSystem();
-                hostConfig.SetServiceName("Host Platform Service");
+                hostConfig.SetServiceName("Topshelf Host Service");
                 //hostConfig.SetDisplayName("My WCF Service Hosted by Topshelf");
                 //hostConfig.SetDescription("A WCF service hosted within a Windows Service using Topshelf.");
                 hostConfig.StartAutomatically();

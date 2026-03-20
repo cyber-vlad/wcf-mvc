@@ -1,6 +1,7 @@
 ﻿using Platform.Service;
 using System;
 using System.ServiceModel;
+using Topshelf;
 
 namespace Platform.Host
 {
@@ -15,15 +16,18 @@ namespace Platform.Host
                 _serviceHost.Close();
             }
 
-            _serviceHost = new ServiceHost(typeof(TopicService));
-
-            _serviceHost.Open();
-            Console.WriteLine("WCF Service started.");
-
-            _serviceHost.Faulted += (sender, args) =>
+            try
             {
-                // fault handling
-            };
+                _serviceHost = new ServiceHost(typeof(TopicService));
+                _serviceHost.Open();
+                Console.WriteLine("WCF Service started.");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                throw;
+            }
         }
 
         public void Stop()
