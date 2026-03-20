@@ -1,28 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Platform.Client.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ServiceClient _serviceClient = new ServiceClient();
+
         public ActionResult Index()
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult RegisterTopic(string topic)
+        {
+            var result = _serviceClient.RegisterTopic(topic);
+            ViewBag.Result = result;
+
+            return View("Index");
+        }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
+            ViewBag.Message = "Application description page.";
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contact page";
 
             return View();
         }
