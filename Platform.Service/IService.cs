@@ -6,6 +6,6 @@ namespace Platform.Service
     public interface IService
     {
         [OperationContract]
-        string GetData(int value);
+        string RegisterTopic(string topic);
     }
 }

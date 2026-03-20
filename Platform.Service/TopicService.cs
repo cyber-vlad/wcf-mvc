@@ -2,9 +2,9 @@
 {
     public class TopicService : IService
     {
-        public string GetData(int value)
+        public string RegisterTopic(string topic)
         {
-            return string.Format("You entered: {0}", value);
+            return $"{topic} registered successfully";
         }
     }
 }
