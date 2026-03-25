@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platform.Client", "Platform
 		{3EB492E9-938E-4C5B-9469-C62D164BCB49} = {3EB492E9-938E-4C5B-9469-C62D164BCB49}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platform.WcfService", "Platform.WcfService\Platform.WcfService.csproj", "{B0E060D3-5583-4CEB-8DD8-E076807F2B0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{40B5520E-E018-4523-AD1F-00E183FAD7F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40B5520E-E018-4523-AD1F-00E183FAD7F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40B5520E-E018-4523-AD1F-00E183FAD7F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0E060D3-5583-4CEB-8DD8-E076807F2B0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0E060D3-5583-4CEB-8DD8-E076807F2B0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0E060D3-5583-4CEB-8DD8-E076807F2B0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0E060D3-5583-4CEB-8DD8-E076807F2B0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

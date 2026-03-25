@@ -1,15 +1,17 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 
 namespace Platform.Client.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ServiceClient _serviceClient = new ServiceClient();
+        private readonly ServiceClient _serviceClient = new ServiceClient("NetTcpBinding_IService");
 
         public ActionResult Index()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult RegisterTopic(string topic)
         {
